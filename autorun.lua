@@ -1,7 +1,9 @@
 local component = require("component")
 local event = require("event")
 local robot = require("robot")
+local energy = require("computer")
 local modem = component.modem
+local navigation = component.navigation
 
 modem.open(15)
 
@@ -18,6 +20,10 @@ function split(s, delimiter)
   end
   return result
 end
+
+function move(x1, y1, z1, x2, y2, z2)
+  end
+
 
 while true do
   print ("Awaiting next command..")
@@ -42,6 +48,18 @@ while true do
 
   if message == "back" then
     robot.back()
+  end
+  
+  if message == "pos" then
+   print(navigation.getPosition())
+  end
+  
+  if message == "range" then
+    print(navigation.getRange())
+  end
+
+  if message == "power" then
+    print(energy.energy())
   end
 
   if message == "stopbot" then
